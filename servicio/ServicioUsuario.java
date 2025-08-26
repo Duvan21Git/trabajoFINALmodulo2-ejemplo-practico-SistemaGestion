@@ -53,7 +53,7 @@ public class ServicioUsuario {
 
     public boolean eliminarUsuario(Usuario actual, String username) {
         if (actual.getRol() != Rol.ADMINISTRADOR) {
-            System.out.println("Permiso denegado: solo administradores pueden eliminar usuarios.");
+            System.out.println("solo administradores pueden eliminar usuarios.");
             return false;
         }
 
@@ -70,7 +70,8 @@ public class ServicioUsuario {
         return false;
     }
 
-    public boolean actualizarUsuario(Usuario actual, String nuevoNombre, String contrasenaActual, String nuevaContrasena) {
+    public boolean actualizarUsuario(Usuario actual, String nuevoNombre, String contrasenaActual,
+            String nuevaContrasena) {
         if (nuevoNombre != null && !nuevoNombre.isBlank()) {
             actual.setNombreCompleto(nuevoNombre);
         }
@@ -86,7 +87,7 @@ public class ServicioUsuario {
         return true;
     }
 
-    public Usuario iniciarSesion(String username, String contrasena) {
+    public Usuario inicioSesion(String username, String contrasena) {
         Usuario usuario = buscarPorUsername(username);
         if (usuario != null && usuario.validarCredenciales(contrasena)) {
             usuario.registrarAccion("Inició sesión.");
@@ -97,7 +98,7 @@ public class ServicioUsuario {
 
     public void mostrarUsuarios(Usuario actual) {
         if (actual.getRol() != Rol.ADMINISTRADOR) {
-            System.out.println("Permiso denegado: solo administradores pueden ver la lista.");
+            System.out.println(" solo administradores pueden ver la lista.");
             return;
         }
 

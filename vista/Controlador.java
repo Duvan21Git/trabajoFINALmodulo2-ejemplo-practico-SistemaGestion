@@ -12,9 +12,10 @@ public class Controlador {
     private Usuario usuarioActual;
 
     public void iniciar() {
+
         System.out.println("=== SISTEMA DE GESTIÓN DE CLIENTES ===");
 
-        Usuario admin = new Usuario("Admin General", "1", "admin", "admin123", Rol.ADMINISTRADOR);
+        Usuario admin = new Usuario("Admin General", "1", "duvan", "admduvan", Rol.ADMINISTRADOR);
         servicio.crearUsuario(admin, admin);
 
         while (true) {
@@ -24,7 +25,7 @@ public class Controlador {
             System.out.print("Contraseña: ");
             String contrasena = scanner.nextLine();
 
-            usuarioActual = servicio.iniciarSesion(username, contrasena);
+            usuarioActual = servicio.inicioSesion(username, contrasena);
             if (usuarioActual != null) {
                 System.out.println("Inicio de sesión exitoso. Bienvenido, " + usuarioActual.getNombreCompleto());
                 mostrarMenu();
@@ -64,13 +65,16 @@ public class Controlador {
                     usuarioActual.mostrarHistorial();
                     break;
                 case "4":
-                    if (esAdmin()) crearUsuario();
+                    if (esAdmin())
+                        crearUsuario();
                     break;
                 case "5":
-                    if (esAdmin()) eliminarUsuario();
+                    if (esAdmin())
+                        eliminarUsuario();
                     break;
                 case "6":
-                    if (esAdmin()) servicio.mostrarUsuarios(usuarioActual);
+                    if (esAdmin())
+                        servicio.mostrarUsuarios(usuarioActual);
                     break;
                 case "0":
                     usuarioActual.registrarAccion("Cerró sesión.");
